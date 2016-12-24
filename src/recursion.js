@@ -141,21 +141,31 @@ return result;
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-var counter = exp;
 var storage = base;
-if (exp === 0){
+var flag = false;
+if (exp === 0) {
 	return 1;
 }
-var recurFunc = function(){
-	debugger;
-	if(counter === 0){
+if (exp===1) {
+	return base;
+}
+if (exp < 1) {
+	flag = true;
+	exp = exp-exp-exp;
+}
+var counter = exp;
+var recurFunc = function() {
+	if(counter === 1) {
 		return;
 	}
 	counter--;
-	storage *= storage;
+	storage *= base;
 	recurFunc();
 }
 recurFunc();
+if (flag === true){
+	storage = 1/storage;
+}
 return storage;
 };
 
@@ -164,6 +174,23 @@ return storage;
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+if (n === 1) {
+	return true;
+}
+var val;
+var recurFunc = function(result){
+	if (result === n){
+	  val = true;
+	  return;
+	}
+	if (result > n){
+	  val = false;
+	  return;
+	}
+	recurFunc(result*2);
+}
+recurFunc(2)
+return val;
 };
 
 // 9. Write a function that reverses a string.
