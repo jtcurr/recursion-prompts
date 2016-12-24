@@ -141,6 +141,22 @@ return result;
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+var counter = exp;
+var storage = base;
+if (exp === 0){
+	return 1;
+}
+var recurFunc = function(){
+	debugger;
+	if(counter === 0){
+		return;
+	}
+	counter--;
+	storage *= storage;
+	recurFunc();
+}
+recurFunc();
+return storage;
 };
 
 // 8. Determine if a number is a power of two.
