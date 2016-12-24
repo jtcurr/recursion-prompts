@@ -195,6 +195,18 @@ return val;
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  var result = '';
+  var counter = string.length;
+  var recurFunc = function(newStr){
+    if (counter === 0){
+    	return;
+    }
+    counter--;
+    result = result + newStr.charAt(counter);
+    recurFunc(string);
+  }
+  recurFunc(string);
+  return result;
 };
 
 // 10. Write a function that determines if a string is a palindrome.
