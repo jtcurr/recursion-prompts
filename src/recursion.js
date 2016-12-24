@@ -235,6 +235,17 @@ return false;
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+  var result = x;
+  var recurFunc = function(x){
+  	debugger;
+  	if(x < y){
+  		return;
+  	}
+  	result = result - y;
+  	recurFunc(result);
+  }
+  recurFunc(result);
+  return result;
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
